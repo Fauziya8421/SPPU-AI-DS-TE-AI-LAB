@@ -1,0 +1,30 @@
+# taking input
+
+matrix = []
+n = int (input(" enter the no. of nodes"))
+for i in range(n):
+    a = []
+    for j in range(n):
+        val = int(input(" enter the edge " + str(i) +" & " + str(j)+ " : "))
+        
+        a.append(val)
+    matrix.append(a)
+print(matrix)
+
+
+
+stack = []
+
+def dfs(start,n):
+    if start not in stack:
+        stack.append(start)
+        print(start)
+
+        for i in range(n):
+            if ( matrix[start][i] == 1 and i not in stack):
+                dfs(i,n) # recursive call
+    return
+
+
+s=int(input("Enter the starting node : "))
+dfs(s,n)

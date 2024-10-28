@@ -1,0 +1,52 @@
+import numpy as np
+matrix=[]
+n=int(input("Enter the number of nodes: "))
+for i in range(n):
+    a=[]
+    for j in range(n):
+        val=int(input("Enter value for edge between "+str(i)+" and "+str(j)+" :"))
+        a.append(val)
+    matrix.append(a)
+arr=np.array(matrix)
+print(arr)
+# matrix = []
+# row = 4
+# nodes = 4
+
+# matrix = [
+#     [99,2,5,3],
+#     [2,99,99,7],
+#     [5,99,99,8],
+#     [3,7,8,99]
+# ]
+
+
+notVisited = []
+for i in range(n):
+    notVisited.append(i)
+visited = []
+q = -1
+start =int(input("Enter the starting node : "))
+cost = 0
+visited.append(start)
+notVisited.pop(start)
+def MST(cost):
+
+    mini = 9999
+    for i in visited:
+        for j in notVisited:
+
+            if (matrix[i][j] != 99 and mini > matrix[i][j]) :
+                mini = matrix[i][j]
+                q = j
+
+    cost = cost + mini
+    print("minimum value selected = ",mini)
+    print("Total cost = ",cost)
+    print("endNode selected = ",q)
+    visited.append(q)
+    notVisited.remove(q)  
+    if notVisited:
+        MST(cost)
+
+MST(cost)

@@ -1,0 +1,27 @@
+queue = []
+visited = []
+def bfs(start,nodes):
+    if start not in visited:
+
+        if start not in queue:
+            queue.append(start)
+        print(start)
+
+        for i in range(nodes):
+
+            if(matrix[start][i] == 1 and i not in queue and i not in visited):
+                #working = i
+                #print("working=",working)
+                queue.append(i)
+
+
+        #print(visited)
+
+        visited.append(queue[0])
+        queue.pop(0)
+        #print(queue)
+        if queue:
+            bfs(queue[0],nodes)
+s=int(input("Enter the starting node : "))
+bfs(s,n)
+print(visited)
